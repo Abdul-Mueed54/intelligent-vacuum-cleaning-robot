@@ -12,6 +12,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{verbatim}
 \usepackage{float}
+\usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 
 \setlength{\parskip}{4pt}
@@ -447,13 +448,10 @@ dirty cells marked cleaned, robot at C).
 
 \begin{figure}[H]
 \centering
-\fbox{\parbox{0.92\textwidth}{\small
-\textbf{Screenshot placeholder --- Test 1.} Paste here the notebook screenshot showing
-\code{Environment.txt}/\code{Schedule.txt} and the SUCCESS output with the coloured journey grid.
-}}
+\includegraphics[width=0.95\textwidth]{test1.png}
 \caption{Configuration and successful output for our environment (notebook output).}
 \end{figure}
-
+`'
 \subsection{Test 2 --- provided sample files}
 
 Configuration: \code{Environment\_Sample.txt} (8$\times$8, six walls in column 3,
@@ -466,10 +464,7 @@ $(3,7)\!\to\!(0,7)\!\to\!(7,7)\!\to\!(7,0)$; 34 movements, total cost 34; status
 
 \begin{figure}[H]
 \centering
-\fbox{\parbox{0.92\textwidth}{\small
-\textbf{Screenshot placeholder --- Test 2.} Paste here the notebook screenshot of the sample
-run with its comparison chart and final grid.
-}}
+\includegraphics[width=0.95\textwidth]{test2.png}
 \caption{Configuration and successful output for the provided sample (notebook output).}
 \end{figure}
 
@@ -489,27 +484,10 @@ with a partial route of 14 moves and status \emph{FAIL --- a required path was n
 it does not falsely report success.
 
 Final grid of the failure run ($R$ = robot stuck at $(7,7)$, $*$ = cleaned, $X$ = wall):
-\begin{center}
-\small
-\begin{tabular}{c|cccccccc}
-      & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
-0 & C & . & . & . & . & . & . & * \\
-1 & . & . & . & . & . & . & . & . \\
-2 & . & . & . & . & . & . & . & . \\
-3 & . & . & . & . & . & . & . & * \\
-4 & . & . & . & . & . & . & . & . \\
-5 & X & X & X & . & . & . & . & . \\
-6 & X & * & X & . & . & . & . & . \\
-7 & X & X & X & . & . & . & . & R \\
-\end{tabular}
-\end{center}
 
 \begin{figure}[H]
 \centering
-\fbox{\parbox{0.92\textwidth}{\small
-\textbf{Screenshot placeholder --- Test 3.} Paste here notebook screenshots showing the
-infeasible-schedule message and the unreachable-destination FAIL status with its grid.
-}}
+\includegraphics[width=0.9\textwidth]{test3.png}
 \caption{Detection and reporting of both failure cases.}
 \end{figure}
 
@@ -533,6 +511,12 @@ The algorithms themselves (BFS, A*, MRV/LCV/forward checking and backtracking) a
 these are simple checks at the file-reading and \code{search} entry points. Normal edge cases
 remain normal: \code{start = goal} returns \code{([start], 0, 0)}, an empty route has cost
 \code{None}, two deadlines keep the stricter one, and unused slots stay empty.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.78\textwidth]{test4.png}
+\caption{Console messages for infeasible inputs and search failures (notebook output).}
+\end{figure}
 
 % =====================================================================
 \section{Discussion and Improvements}
